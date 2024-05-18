@@ -16,8 +16,12 @@ class PatientAppointment(admin.TabularInline):
 
 
 class PatientHistoryAdmin(admin.ModelAdmin):
-    list_display = ('patient', 'assigned_doctor', 'admit_date', 'department', 'release_date')
+    list_display = ('patient', 'assigned_doctor', 'admit_date', 'get_department_name', 'release_date')
     inlines = [PatientAppointment, PatientCost]
+
+    def get_department_name(self, obj):
+        return obj.department.name
+    get_department_name.short_description = 'Department'
 
 
 admin.site.register(PatientHistory, PatientHistoryAdmin)
