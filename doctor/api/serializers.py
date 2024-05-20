@@ -1,5 +1,7 @@
 from rest_framework import serializers
+
 from account.models import User
+
 from doctor.models import Doctor
 
 from django.contrib.auth.models import Group
@@ -47,19 +49,7 @@ class DoctorRegistrationSerializer(serializers.Serializer):
 
 
 class DoctorProfileSerializer(serializers.Serializer):
-    Cardiologist = 'CL'
-    Dermatologists = 'DL'
-    Emergency_Medicine_Specialists = 'EMC'
-    Immunologists = 'IL'
-    Anesthesiologists = 'AL'
-    Colon_and_Rectal_Surgeons = 'CRS'
-    department = serializers.ChoiceField(label='Department:',
-                                         choices=[(Cardiologist, 'Cardiologist'),
-                                                  (Dermatologists, 'Dermatologists'),
-                                                  (Emergency_Medicine_Specialists, 'Emergency Medicine Specialists'),
-                                                  (Immunologists, 'Immunologists'),
-                                                  (Anesthesiologists, 'Anesthesiologists'),
-                                                  (Colon_and_Rectal_Surgeons, 'Colon and Rectal Surgeons')])
+    department = serializers.CharField(label='Department: ', max_length=50,)
     address = serializers.CharField(label="Address:")
     mobile = serializers.CharField(label="Mobile Number:", max_length=20)
 
@@ -86,15 +76,9 @@ class DoctorProfileSerializer(serializers.Serializer):
 
 
 class PatientHistorySerializerDoctorView(serializers.Serializer):
-    Cardiologist = 'CL'
-    Dermatologists = 'DL'
-    Emergency_Medicine_Specialists = 'EMC'
-    Immunologists = 'IL'
-    Anesthesiologists = 'AL'
-    Colon_and_Rectal_Surgeons = 'CRS'
     admit_date = serializers.DateField(label="Admit Date:", read_only=True)
     symptomps = serializers.CharField(label="Symptomps:", style={'base_template': 'textarea.html'})
-    department = serializers.CharField(label='Department: ')
+    department = serializers.CharField(label='Department: ', max_length=50,)
     release_date = serializers.DateField(label="Release Date:", required=False)
     assigned_doctor = serializers.StringRelatedField(label='Assigned Doctor:')
 
