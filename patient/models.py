@@ -24,20 +24,6 @@ class Patient(models.Model):
 
 
 class PatientHistory(models.Model):
-    # Cardiologist = 'CL'
-    # Dermatologists = 'DL'
-    # Emergency_Medicine_Specialists = 'EMC'
-    # Immunologists = 'IL'
-    # Anesthesiologists = 'AL'
-    # Colon_and_Rectal_Surgeons = 'CRS'
-    #
-    # department_choices = [(Cardiologist, 'Cardiologist'),
-    #                       (Dermatologists, 'Dermatologists'),
-    #                       (Emergency_Medicine_Specialists, 'Emergency Medicine Specialists'),
-    #                       (Immunologists, 'Immunologists'),
-    #                       (Anesthesiologists, 'Anesthesiologists'),
-    #                       (Colon_and_Rectal_Surgeons, 'Colon and Rectal Surgeons')
-    #                       ]
     admit_date = models.DateField(verbose_name="Admit Date", auto_now=False, auto_now_add=True)
     symptomps = models.TextField()
     department = models.ManyToManyField(Department, related_name='patient_histories', blank=True, default=None)
@@ -48,17 +34,6 @@ class PatientHistory(models.Model):
 
     def __str__(self):
         return self.patient.get_name
-
-
-# class Department(models.Model):
-#     name = models.CharField(max_length=31, verbose_name='Отдел')
-#
-#     def __str__(self):
-#         return self.name
-#
-#     class Meta:
-#         verbose_name = 'Отдел'
-#         verbose_name_plural = 'Отделы'
 
 
 class Appointment(models.Model):
