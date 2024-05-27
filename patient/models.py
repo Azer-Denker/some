@@ -39,7 +39,7 @@ class PatientHistory(models.Model):
 class Appointment(models.Model):
     appointment_date = models.DateField(verbose_name="Appointment date", auto_now=False, auto_now_add=False)
     appointment_time = models.TimeField(verbose_name="Appointement time", auto_now=False, auto_now_add=False)
-    status = models.BooleanField(default=False)
+    status = models.BooleanField(default=True)
     patient_history = models.ForeignKey(PatientHistory, related_name='patient_appointments', on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, related_name='doctor_appointments', null=True, on_delete=models.SET_NULL)
 

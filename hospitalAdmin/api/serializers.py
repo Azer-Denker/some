@@ -51,19 +51,7 @@ class DoctorRegistrationSerializerAdmin(serializers.Serializer):
 
 
 class DoctorRegistrationProfileSerializerAdmin(serializers.Serializer):
-    Cardiologist = 'CL'
-    Dermatologists = 'DL'
-    Emergency_Medicine_Specialists = 'EMC'
-    Immunologists = 'IL'
-    Anesthesiologists = 'AL'
-    Colon_and_Rectal_Surgeons = 'CRS'
-    department = serializers.ChoiceField(label='Department:',
-                                         choices=[(Cardiologist, 'Cardiologist'), (Dermatologists, 'Dermatologists'),
-                                                  (Emergency_Medicine_Specialists, 'Emergency Medicine Specialists'),
-                                                  (Immunologists, 'Immunologists'),
-                                                  (Anesthesiologists, 'Anesthesiologists'),
-                                                  (Colon_and_Rectal_Surgeons, 'Colon and Rectal Surgeons')
-                                                  ])
+    department = serializers.CharField(label='Department: ', max_length=50,)
     address = serializers.CharField(label="Address:")
     mobile = serializers.CharField(label="Mobile Number:", max_length=20)
 

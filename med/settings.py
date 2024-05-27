@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #Apps
     'account.apps.AccountConfig',
-    'phonenumber_field',
     'doctor.apps.DoctorConfig',
     'patient.apps.PatientConfig',
     'hospitalAdmin.apps.HospitaladminConfig',
+    'phonenumber_field',
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',

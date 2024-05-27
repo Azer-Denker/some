@@ -32,7 +32,6 @@ class IsAdmin(BasePermission):
 
 
 class CustomAuthToken(ObtainAuthToken):
-    @swagger_auto_schema(operation_summary="Emil adm")
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})
@@ -49,7 +48,7 @@ class CustomAuthToken(ObtainAuthToken):
 class DocRegistrationViewAdmin(APIView):
     permission_classes = [IsAdmin]
 
-    @swagger_auto_schema(operation_summary="Emil got")
+    @swagger_auto_schema(operation_summary="Emil doc reg")
     def post(self, request):
         registration_serializer = DoctorRegistrationSerializerAdmin(
             data=request.data.get('user_data'))
@@ -87,7 +86,7 @@ class DoctorAccountViewAdmin(APIView):
         serializer = DoctorAccountSerializerAdmin(all_doctor, many=True)
         return Response({'doctors': serializer.data}, status=status.HTTP_200_OK)
 
-    @swagger_auto_schema(operation_summary="Emil pidor2")
+    @swagger_auto_schema(operation_summary="Emil update doc")
     def put(self, request, pk):
         saved_user = self.get_object(pk)
         serializer = DoctorAccountSerializerAdmin(
